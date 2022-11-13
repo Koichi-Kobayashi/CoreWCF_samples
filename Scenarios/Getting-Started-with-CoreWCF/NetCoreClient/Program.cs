@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Threading.Tasks;
-using Contract;
+using SharedExtra;
 
 namespace NetCoreClient
 {
@@ -35,7 +35,7 @@ namespace NetCoreClient
                 IEchoService client = factory.CreateChannel();
                 channel = client as IClientChannel;
                 channel.Open();
-                var result = await client.Echo("Hello World!");
+                var result = await client.Echo(ServiceID.Login, "Hello World!");
                 channel.Close();
                 Console.WriteLine(result);
             }
@@ -58,7 +58,7 @@ namespace NetCoreClient
                 IEchoService client = factory.CreateChannel();
                 channel = client as IClientChannel;
                 channel.Open();
-                var result = await client.Echo("Hello World!");
+                var result = await client.Echo(ServiceID.Login, "Hello World!");
                 channel.Close();
                 Console.WriteLine(result);
             }
@@ -81,7 +81,7 @@ namespace NetCoreClient
                 IEchoService client = factory.CreateChannel();
                 channel = client as IClientChannel;
                 channel.Open();
-                var result = await client.Echo("Hello World!");
+                var result = await client.Echo(ServiceID.Login, "Hello World!");
                 channel.Close();
                 Console.WriteLine(result);
             }

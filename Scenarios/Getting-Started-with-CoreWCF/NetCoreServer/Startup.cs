@@ -4,8 +4,8 @@ using CoreWCF.Configuration;
 using CoreWCF.Channels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Contract;
 using CoreWCF.Description;
+using SharedExtra;
 
 namespace NetCoreServer
 {

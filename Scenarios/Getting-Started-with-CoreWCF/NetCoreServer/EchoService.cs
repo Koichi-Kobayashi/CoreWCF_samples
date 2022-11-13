@@ -1,28 +1,29 @@
 using System.Threading.Tasks;
-using Contract;
 using CoreWCF;
+using Shared;
+using SharedExtra;
 
 namespace NetCoreServer
 {
     public class EchoService : IEchoService
     {
-        public string Echo(string text)
+        public Task<string> Echo(ServiceID id, string text)
         {
-            System.Console.WriteLine($"Received {text} from client!");
-            return text;
+            System.Console.WriteLine($"Received {text} from client! & ServiceID = {id}");
+            return Task.FromResult(text);
         }
 
-        public string ComplexEcho(EchoMessage text)
+        public Task<string> ComplexEcho(EchoMessage text)
         {
             System.Console.WriteLine($"Received {text.Text} from client!");
-            return text.Text;
+            return Task.FromResult(text.Text);
         }
 
-        public string FailEcho(string text)
+        public Task<string> FailEcho(string text)
             => throw new FaultException<EchoFault>(new EchoFault() { Text = "WCF Fault OK" }, new FaultReason("FailReason"));
 
         [AuthorizeRole("CoreWCFGroupAdmin")]
-        public string EchoForPermission(string echo)
+        public Task<string> EchoForPermission(Task<string> echo)
         {
             return echo;
         }
