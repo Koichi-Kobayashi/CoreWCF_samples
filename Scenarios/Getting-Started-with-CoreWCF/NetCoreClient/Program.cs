@@ -19,7 +19,7 @@ namespace NetCoreClient
             await CallBasicHttpBinding($"https://localhost:{HTTPS_PORT}");
             await CallWsHttpBinding($"http://localhost:{HTTP_PORT}");
             await CallWsHttpBinding($"https://localhost:{HTTPS_PORT}");
-            await CallNetTcpBinding($"net.tcp://localhost:{NETTCP_PORT}");
+            //await CallNetTcpBinding($"net.tcp://localhost:{NETTCP_PORT}");
         }
 
         private static async Task CallBasicHttpBinding(string hostAddr)
